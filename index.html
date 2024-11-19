@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Torneos de Paddle</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Gestión de Torneos de Paddle</h1>
-
-        <!-- Sección de Login -->
-        <section id="login-section">
+        <div id="login-section">
             <h2>Inicio de Sesión</h2>
             <form id="login-form">
                 <input type="text" id="login-username" placeholder="Usuario" required>
@@ -18,109 +17,61 @@
                 <button type="submit" class="btn">Iniciar Sesión</button>
             </form>
             <p>¿No tienes cuenta? <a href="#" onclick="showRegister()">Regístrate</a></p>
-        </section>
-
-        <!-- Sección de Registro -->
-        <section id="register-section" class="hidden">
+        </div>
+        <div id="register-section" class="hidden">
             <h2>Registro</h2>
             <form id="register-form">
                 <input type="text" id="register-username" placeholder="Usuario" required>
                 <input type="password" id="register-password" placeholder="Contraseña" required>
-                <select id="register-role" required>
-                    <option value="user">Usuario Normal</option>
+                <select id="register-role">
+                    <option value="user">Usuario</option>
                     <option value="admin">Administrador</option>
                 </select>
                 <button type="submit" class="btn">Registrarse</button>
             </form>
             <p>¿Ya tienes cuenta? <a href="#" onclick="showLogin()">Inicia Sesión</a></p>
-        </section>
-
-        <!-- Vista de Usuario -->
-        <section id="user-view" class="hidden">
+        </div>
+        <div id="user-view" class="hidden">
             <h2>Vista de Usuario</h2>
-            <div class="matches-section">
-                <h3>Partidos Programados</h3>
-                <div id="user-matches-list"></div>
-            </div>
+            <h3>Partidos Programados</h3>
+            <ul id="scheduled-matches-list"></ul>
             <button onclick="logout()" class="btn">Cerrar Sesión</button>
-        </section>
-
-        <!-- Vista de Administrador -->
-     <!-- Dentro de la sección de admin-view -->
-<div class="admin-section">
-    <h3>Gestión de Jugadores</h3>
-    <input type="text" id="player-name" placeholder="Nombre del Jugador">
-    <button onclick="addPlayer()" class="btn">Añadir Jugador</button>
-    <div id="players-list"></div>
-</div>
-
-<div class="admin-section">
-    <h3>Gestión de Equipos</h3>
-    <input type="text" id="team-name" placeholder="Nombre del Equipo">
-    <button onclick="addTeam()" class="btn">Añadir Equipo</button>
-    <div id="teams-list"></div>
-</div>
-
-<div class="admin-section">
-    <h3>Programar Partido</h3>
-    <input type="text" id="team1" placeholder="Equipo 1">
-    <input type="text" id="team2" placeholder="Equipo 2">
-    <input type="datetime-local" id="match-date">
-    <button onclick="scheduleMatch()" class="btn">Programar Partido</button>
-    <div id="matches-list"></div>
-</div>
-
-            <!-- Gestión de Equipos -->
+        </div>
+        <div id="admin-view" class="hidden">
+            <h2>Vista de Administrador</h2>
+            <div class="admin-section">
+                <h3>Gestión de Jugadores</h3>
+                <button onclick="addPlayer()" class="btn">Añadir Jugador</button>
+                <ul id="players-list"></ul>
+            </div>
             <div class="admin-section">
                 <h3>Gestión de Equipos</h3>
-                <form id="team-form">
-                    <input type="text" id="team-name" placeholder="Nombre del Equipo" required>
-                    <select id="player1-select" required>
-                        <option value="">Selecciona Jugador 1</option>
-                    </select>
-                    <select id="player2-select" required>
-                        <option value="">Selecciona Jugador 2</option>
-                    </select>
-                    <button type="submit" class="btn">Crear Equipo</button>
-                </form>
-                <div id="teams-list" class="list-container"></div>
+                <button onclick="addTeam()" class="btn">Añadir Equipo</button>
+                <ul id="teams-list"></ul>
             </div>
-
-            <!-- Gestión de Partidos -->
             <div class="admin-section">
-                <h3>Programar Partido</h3>
-                <form id="match-form">
-                    <select id="team1-select" required>
-                        <option value="">Selecciona Equipo 1</option>
-                    </select>
-                    <select id="team2-select" required>
-                        <option value="">Selecciona Equipo 2</option>
-                    </select>
-                    <input type="datetime-local" id="match-date" required>
-                    <button type="submit" class="btn">Programar Partido</button>
-                </form>
-                <div id="matches-list" class="list-container"></div>
+                <h3>Partidos</h3>
+                <button onclick="scheduleMatch()" class="btn">Programar Partido</button>
+                <ul id="matches-list"></ul>
             </div>
-
-            <!-- Tabla de Clasificación -->
             <div class="admin-section">
                 <h3>Tabla de Clasificación</h3>
-                <table id="standings-table">
+                <table>
                     <thead>
                         <tr>
                             <th>Equipo</th>
                             <th>Jugados</th>
                             <th>Ganados</th>
                             <th>Perdidos</th>
+                            <th>Empatados</th>
                             <th>Puntos</th>
                         </tr>
                     </thead>
                     <tbody id="standings-body"></tbody>
                 </table>
             </div>
-
-            <button onclick="logout()" class="btn logout-btn">Cerrar Sesión</button>
-        </section>
+            <button onclick="logout()" class="btn">Cerrar Sesión</button>
+        </div>
     </div>
     <script src="app.js"></script>
 </body>
