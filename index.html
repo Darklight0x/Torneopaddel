@@ -46,19 +46,29 @@
         </section>
 
         <!-- Vista de Administrador -->
-        <section id="admin-view" class="hidden">
-            <h2>Vista de Administrador</h2>
+     <!-- Dentro de la sección de admin-view -->
+<div class="admin-section">
+    <h3>Gestión de Jugadores</h3>
+    <input type="text" id="player-name" placeholder="Nombre del Jugador">
+    <button onclick="addPlayer()" class="btn">Añadir Jugador</button>
+    <div id="players-list"></div>
+</div>
 
-            <!-- Gestión de Jugadores -->
-            <div class="admin-section">
-                <h3>Gestión de Jugadores</h3>
-                <form id="player-form">
-                    <input type="text" id="player-name" placeholder="Nombre del Jugador" required>
-                    <input type="text" id="player-level" placeholder="Nivel (1-5)" required>
-                    <button type="submit" class="btn">Añadir Jugador</button>
-                </form>
-                <div id="players-list" class="list-container"></div>
-            </div>
+<div class="admin-section">
+    <h3>Gestión de Equipos</h3>
+    <input type="text" id="team-name" placeholder="Nombre del Equipo">
+    <button onclick="addTeam()" class="btn">Añadir Equipo</button>
+    <div id="teams-list"></div>
+</div>
+
+<div class="admin-section">
+    <h3>Programar Partido</h3>
+    <input type="text" id="team1" placeholder="Equipo 1">
+    <input type="text" id="team2" placeholder="Equipo 2">
+    <input type="datetime-local" id="match-date">
+    <button onclick="scheduleMatch()" class="btn">Programar Partido</button>
+    <div id="matches-list"></div>
+</div>
 
             <!-- Gestión de Equipos -->
             <div class="admin-section">
